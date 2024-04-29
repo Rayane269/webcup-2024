@@ -9,6 +9,9 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
+import SecondaryButton from '@/Components/SecondaryButton';
+import GoogleIcon from '@/Components/GoogleIcon';
+import FacebookIcon from '@/Components/FacebookIcon';
 
 export default function Register() {
   const page = useTypedPage();
@@ -31,6 +34,29 @@ export default function Register() {
   return (
     <AuthenticationCard>
       <Head title="Register" />
+
+      <h1 className='mb-12 text-4xl font-bold'>Inscrivez vous</h1>
+
+      <div className='flex flex-col gap-3'>
+        <SecondaryButton
+          className='justify-center items-center gap-x-3 rounded-full py-3'
+        >
+          <GoogleIcon />
+          S'inscrire avec google
+        </SecondaryButton>
+        <SecondaryButton
+          className='justify-center items-center gap-x-3 rounded-full py-3'
+        >
+          <FacebookIcon />
+          S'inscrire avec facebook
+        </SecondaryButton>
+      </div>
+
+      <div className='flex items-center mt-4 mb-2'> 
+        <div className='h-px bg-black w-1/2'></div>
+        <p className='ml-2 mr-2'>Ou</p>
+        <div className='h-px bg-black w-1/2'></div>
+      </div>
 
       <form onSubmit={onSubmit}>
         <div>
@@ -132,21 +158,21 @@ export default function Register() {
           </div>
         )}
 
-        <div className="flex items-center justify-end mt-4">
+        <PrimaryButton
+          className={classNames('w-full justify-center mt-5 py-3 fond-bold rounded-full', { 'opacity-25': form.processing })}
+          disabled={form.processing}
+        >
+          S'inscrire
+        </PrimaryButton>
+        <p className='mt-12 text-center'>
+          Vous avez deja un compte ? 
           <Link
             href={route('login')}
-            className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="ml-2 underline text-sm text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            Already registered?
+            Connectez-vous
           </Link>
-
-          <PrimaryButton
-            className={classNames('ml-4', { 'opacity-25': form.processing })}
-            disabled={form.processing}
-          >
-            Register
-          </PrimaryButton>
-        </div>
+        </p>
       </form>
     </AuthenticationCard>
   );

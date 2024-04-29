@@ -8,6 +8,9 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
+import SecondaryButton from '@/Components/SecondaryButton';
+import GoogleIcon from '@/Components/GoogleIcon';
+import FacebookIcon from '@/Components/FacebookIcon';
 
 interface Props {
   canResetPassword: boolean;
@@ -38,6 +41,30 @@ export default function Login({ canResetPassword, status }: Props) {
           {status}
         </div>
       )}
+
+      <h1 className='mt-7 mb-7 text-6xl font-bold'>Ça se passe maintenant</h1>
+      <h1 className='mb-5 text-4xl font-bold'>Connecter vous</h1>
+
+      <div className='flex flex-col gap-3'>
+        <SecondaryButton
+          className='justify-center items-center gap-x-3 rounded-full py-3'
+        >
+          <GoogleIcon />
+          Se connecter avec google
+        </SecondaryButton>
+        <SecondaryButton
+          className='justify-center items-center gap-x-3 rounded-full py-3'
+        >
+          <FacebookIcon />
+          Se connecter avec facebook
+        </SecondaryButton>
+      </div>
+
+      <div className='flex items-center mt-4 mb-2'> 
+        <div className='h-px bg-black w-1/2'></div>
+        <p className='ml-2 mr-2'>Ou</p>
+        <div className='h-px bg-black w-1/2'></div>
+      </div>
 
       <form onSubmit={onSubmit}>
         <div>
@@ -83,34 +110,34 @@ export default function Login({ canResetPassword, status }: Props) {
           </label>
         </div>
 
-        <div className="flex flex-col space-y-2 md:flex-row md:items-center md:justify-between md:space-y-0 mt-4">
+        <div className="flex flex-col mt-4 gap-y-5">
+          <PrimaryButton
+            className={classNames('justify-center py-3 fond-bold rounded-full', { 'opacity-25': form.processing })}
+            disabled={form.processing}
+          >
+            Se connecter
+          </PrimaryButton>
           {canResetPassword && (
-            <div>
+            <SecondaryButton
+              className="justify-center py-3 fond-bold text-sm text-gray-600 hover:text-gray-900 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
               <Link
                 href={route('password.request')}
-                className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Forgot your password?
+                Mot de passe oublie ?
               </Link>
-            </div>
+            </SecondaryButton>
           )}
-
-          <div className="flex items-center justify-end">
-            <Link
-              href={route('register')}
-              className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Need an account?
-            </Link>
-
-            <PrimaryButton
-              className={classNames('ml-4', { 'opacity-25': form.processing })}
-              disabled={form.processing}
-            >
-              Log in
-            </PrimaryButton>
-          </div>
         </div>
+        <p className='mt-12 text-center'>
+          Vous n'avez pas de compte ? 
+          <Link
+            href={route('register')}
+            className="ml-2 underline text-sm text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Inscrivez-vous
+          </Link>
+        </p>
       </form>
     </AuthenticationCard>
   );
