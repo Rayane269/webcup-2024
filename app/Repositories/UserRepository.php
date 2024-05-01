@@ -8,13 +8,12 @@ use League\OAuth2\Client\Provider\FacebookUser;
 use League\OAuth2\Client\Provider\GoogleUser;
 
 class UserRepository {
-  public function findOrCreateFromOAuth(GoogleUser|FacebookUser $resourceOwner): User
+  public function findOrCreateFromOAuth(GoogleUser|FacebookUser $resourceOwner)
   {
     /** @var User|null $user */
-    $user = DB::table('users')
-      ->where('oauth_id', '=', $resourceOwner->getId())
-      ->orWhere('email', '=', $resourceOwner->getEmail())
-      ->get()->first()
+    $user = User::where('oauth_id', $resourceOwner->getId())
+    ->orWhere('email', $resourceOwner->getEmail())
+    ->first();
     ;
 
     if ($user) {

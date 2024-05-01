@@ -11,7 +11,7 @@ class UserService {
     private UserRepository $userRepository
   ) {}
 
-  public function findOrCreateUserFromOAuth(ResourceOwnerInterface $resourceOwner): User
+  public function findOrCreateUserFromOAuth(ResourceOwnerInterface $resourceOwner)
   {
     return $this->userRepository->findOrCreateFromOAuth($resourceOwner);
   }
