@@ -38,17 +38,23 @@ export default function Register() {
       <h1 className='mb-12 text-4xl font-bold'>Inscrivez vous</h1>
 
       <div className='flex flex-col gap-3'>
-        <SecondaryButton
-          className='justify-center items-center gap-x-3 rounded-full py-3'
-        >
-          <GoogleIcon />
-          S'inscrire avec google
+        <SecondaryButton className='rounded-full py-0 px-0'>
+          <a 
+            href="/connect/google" 
+            className='flex justify-center items-center gap-x-3 w-full h-full'
+          >
+            <GoogleIcon />
+            S'inscrire avec google
+          </a>
         </SecondaryButton>
-        <SecondaryButton
-          className='justify-center items-center gap-x-3 rounded-full py-3'
-        >
-          <FacebookIcon />
-          S'inscrire avec facebook
+        <SecondaryButton className='rounded-full py-0 px-0'>
+          <a 
+            href="/connect/facebook" 
+            className='flex justify-center items-center gap-x-3 w-full h-full p-2' 
+          >
+            <FacebookIcon />
+            S'inscrire avec facebook
+          </a>
         </SecondaryButton>
       </div>
 

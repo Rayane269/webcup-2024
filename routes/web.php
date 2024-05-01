@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\GoogleController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -12,6 +13,9 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+Route::get('/connect/google', [GoogleController::class, 'connect'])->name('connect_google');
+Route::get('/connect/check/google', [GoogleController::class, 'connectCheck'])->name('connect_check_google');
 
 Route::middleware([
     'auth:sanctum',
