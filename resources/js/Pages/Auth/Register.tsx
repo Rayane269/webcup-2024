@@ -35,22 +35,22 @@ export default function Register() {
     <AuthenticationCard>
       <Head title="Register" />
 
-      <h1 className='mb-12 text-4xl font-bold'>Inscrivez vous</h1>
+      <h1 className='mb-12 text-3xl md:text-4xl font-bold'>Inscrivez vous</h1>
 
       <div className='flex flex-col gap-3'>
-        <SecondaryButton className='rounded-full py-0 px-0'>
+        <SecondaryButton className='rounded-full'>
           <a 
             href="/connect/google" 
-            className='flex justify-center items-center gap-x-3 w-full h-full'
+            className='flex justify-center items-center gap-x-3 w-full h-full p-[10px]'
           >
             <GoogleIcon />
             S'inscrire avec google
           </a>
         </SecondaryButton>
-        <SecondaryButton className='rounded-full py-0 px-0'>
+        <SecondaryButton className='rounded-full'>
           <a 
             href="/connect/facebook" 
-            className='flex justify-center items-center gap-x-3 w-full h-full p-2' 
+            className='flex justify-center items-center gap-x-3 w-full h-full p-[10px]' 
           >
             <FacebookIcon />
             S'inscrire avec facebook

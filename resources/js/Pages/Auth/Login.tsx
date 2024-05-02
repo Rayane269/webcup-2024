@@ -42,23 +42,23 @@ export default function Login({ canResetPassword, status }: Props) {
         </div>
       )}
 
-      <h1 className='mt-7 mb-7 text-6xl font-bold'>Ça se passe maintenant</h1>
-      <h1 className='mb-5 text-4xl font-bold'>Connecter vous</h1>
+      <h1 className='mt-7 mb-7 text-4xl md:text-6xl font-bold'>Ça se passe maintenant</h1>
+      <h1 className='mb-5 text-2xl md:text-4xl font-bold'>Connecter vous</h1>
 
       <div className='flex flex-col gap-3'>
-        <SecondaryButton className='rounded-full py-0 px-0'>
+        <SecondaryButton className='rounded-full'>
           <a 
             href="/connect/google" 
-            className='flex justify-center items-center gap-x-3 w-full h-full p-2'
+            className='flex justify-center items-center gap-x-3 w-full h-full p-[10px]'
           >
             <GoogleIcon />
             Se connecter avec google
           </a>
         </SecondaryButton>
-        <SecondaryButton className='rounded-full py-0 px-0'>
+        <SecondaryButton className='rounded-full'>
           <a 
             href="/connect/facebook" 
-            className='flex justify-center items-center gap-x-3 w-full h-full p-2'
+            className='flex justify-center items-center gap-x-3 w-full h-full p-[10px]'
           >
             <FacebookIcon />
             Se connecter avec facebook
