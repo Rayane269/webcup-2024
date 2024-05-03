@@ -2,6 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Webcup";
+    src: url('../fonts/ckhans-fonts-helonik-extended-bold-demo.otf')
+}
+
+
+@font-face {
+    font-family: "Open Sans";
+    src: url('../fonts/OpenSans-VariableFont_wdth\,wght.ttf');
+}
+
+/* Lato Black */
+@font-face {
+    font-family: 'Lato Black';
+    src: url('../fonts/Lato-Black.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+/* Lato Bold */
+@font-face {
+    font-family: 'Lato Bold';
+    src: url('../fonts/Lato-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Lato Italic */
+@font-face {
+    font-family: 'Lato Italic';
+    src: url('../fonts/Lato-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+/* Lato Regular */
+@font-face {
+    font-family: 'Lato Regular';
+    src: url('../fonts/Lato-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+  
 [x-cloak] {
     display: none;
 }

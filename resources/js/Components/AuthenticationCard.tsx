@@ -11,7 +11,7 @@ export default function AuthenticationCard({
           <AuthenticationCardLogo />
         </div>
 
-        <div className="lg:w-1/2 mt-6 px-6 py-4 bg-white">
+        <div className="lg:w-1/2 md:mt-6 px-6 py-4 bg-white">
           {children}
         </div>
       </div>
