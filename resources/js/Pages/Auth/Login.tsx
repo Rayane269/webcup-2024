@@ -9,8 +9,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
 import SecondaryButton from '@/Components/SecondaryButton';
-import GoogleIcon from '@/Components/GoogleIcon';
-import FacebookIcon from '@/Components/FacebookIcon';
+import { GoogleIcon, DiscordIcon} from '@/Components/Icons';
 
 interface Props {
   canResetPassword: boolean;
@@ -57,11 +56,11 @@ export default function Login({ canResetPassword, status }: Props) {
         </SecondaryButton>
         <SecondaryButton className='rounded-full'>
           <a 
-            href="/connect/facebook" 
+            href="/connect/discord" 
             className='flex justify-center items-center gap-x-3 w-full h-full p-[10px]'
           >
-            <FacebookIcon />
-            Se connecter avec facebook
+            <DiscordIcon />
+            Se connecter avec discord
           </a>
         </SecondaryButton>
       </div>

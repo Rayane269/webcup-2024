@@ -10,8 +10,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
 import SecondaryButton from '@/Components/SecondaryButton';
-import GoogleIcon from '@/Components/GoogleIcon';
-import FacebookIcon from '@/Components/FacebookIcon';
+import { DiscordIcon, GoogleIcon } from '@/Components/Icons';
 
 export default function Register() {
   const page = useTypedPage();
@@ -49,11 +48,11 @@ export default function Register() {
         </SecondaryButton>
         <SecondaryButton className='rounded-full'>
           <a 
-            href="/connect/facebook" 
+            href="/connect/discord" 
             className='flex justify-center items-center gap-x-3 w-full h-full p-[10px]' 
           >
-            <FacebookIcon />
-            S'inscrire avec facebook
+            <DiscordIcon />
+            S'inscrire avec discord
           </a>
         </SecondaryButton>
       </div>
