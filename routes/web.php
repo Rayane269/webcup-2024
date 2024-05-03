@@ -1,11 +1,14 @@
 <?php
 
+use Inertia\Inertia;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\FacebookController;
-use App\Http\Controllers\Auth\GoogleController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use App\Http\Middleware\SetLocale;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -34,3 +37,13 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+Route::get('/greeting/{locale}', function (string $locale) {
+    if (! in_array($locale, ['en', 'fr'])) {
+        abort(400);
+    }
+ 
+    Session::put('locale', $locale);
+    return back();
+})->name("set_locale");
+

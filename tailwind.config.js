@@ -15,6 +15,13 @@ export default {
     theme: {
         extend: {
             fontFamily: {
+                'webcup': ["Webcup"],
+                'opensans': ['"Open Sans"'],
+                'lato': ['"Lato Regular"'],
+                'lato-italic': ['"Lato Italic"'],
+                'lato-bold': ['"Lato Bold"'],
+                'lato-bold-italic': ['"Lato Bold Italic"'],
+                'lato-black': ['"Lato Black"'],
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
