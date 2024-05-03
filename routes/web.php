@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\FacebookController;
 use App\Http\Controllers\Auth\GoogleController;
 use Illuminate\Foundation\Application;
@@ -20,6 +21,9 @@ Route::get('/connect/check/google', [GoogleController::class, 'connectCheck'])->
 
 Route::get('/connect/facebook', [FacebookController::class, 'connect'])->name('connect_facebook');
 Route::get('/connect/check/facebook', [FacebookController::class, 'connectCheck'])->name('connect_check_facebook');
+
+Route::get('/connect/discord', [DiscordController::class, 'connect'])->name('connect_discord');
+Route::get('/connect/check/discord', [DiscordController::class, 'connectCheck'])->name('connect_check_discord');
 
 Route::middleware([
     'auth:sanctum',

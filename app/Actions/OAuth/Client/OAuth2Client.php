@@ -30,7 +30,7 @@ class OAuth2Client implements OAuth2ClientInterface
     if (!$code) {
       throw new \Exception('No "code" parameter was found (usually this is a query parameter)!');
     }
-
+    
     return $this->provider->getAccessToken(
       'authorization_code',
       array_merge(['code' => $code], $options)

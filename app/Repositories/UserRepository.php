@@ -3,12 +3,12 @@
 namespace App\Repositories;
 
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use League\OAuth2\Client\Provider\FacebookUser;
 use League\OAuth2\Client\Provider\GoogleUser;
+use Wohali\OAuth2\Client\Provider\DiscordResourceOwner;
 
 class UserRepository {
-  public function findOrCreateFromOAuth(GoogleUser|FacebookUser $resourceOwner)
+  public function findOrCreateFromOAuth(GoogleUser|FacebookUser|DiscordResourceOwner $resourceOwner)
   {
     /** @var User|null $user */
     $user = User::where('oauth_id', $resourceOwner->getId())

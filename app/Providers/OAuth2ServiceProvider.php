@@ -15,8 +15,9 @@ use Wohali\OAuth2\Client\Provider\Discord;
 
 class OAuth2ServiceProvider extends ServiceProvider {
   private $serviceOAuthMaps = [
+    "google_main" => GoogleClient::class,
+    "discord_main" => DiscordClient::class,
     "facebook_main" => FacebookClient::class, 
-    "google_main" => GoogleClient::class
   ];
 
   public function register()
@@ -46,6 +47,16 @@ class OAuth2ServiceProvider extends ServiceProvider {
       ]); 
 
       return new FacebookClient($facebookProvider, $request);
+    });
+
+    $this->app->bind(DiscordClient::class, function() use($request) {
+      $provider = new Discord([
+        'clientId'        => env('DISCORD_CLIENT_ID'),    
+        'clientSecret'    => env('DISCORD_CLIENT_SECRET'),  
+        'redirectUri'     => route('connect_check_discord'),
+      ]); 
+
+      return new DiscordClient($provider, $request);
     });
   }
 }
