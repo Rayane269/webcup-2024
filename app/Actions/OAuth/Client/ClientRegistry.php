@@ -19,6 +19,7 @@ class ClientRegistry {
     }
 
     $client = $this->container->get($this->serviceMap[$key]);
+
     if (!$client instanceof OAuth2ClientInterface) {
       throw new \InvalidArgumentException(sprintf('Somehow the "%s" client is not an instance of OAuth2ClientInterface.', $key));
     }
