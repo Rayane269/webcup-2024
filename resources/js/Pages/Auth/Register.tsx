@@ -1,6 +1,6 @@
 import { Link, useForm, Head } from '@inertiajs/react';
 import classNames from 'classnames';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import useRoute from '@/Hooks/useRoute';
 import useTypedPage from '@/Hooks/useTypedPage';
 import AuthenticationCard from '@/Components/AuthenticationCard';
@@ -11,10 +11,25 @@ import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
 import SecondaryButton from '@/Components/SecondaryButton';
 import { DiscordIcon, GoogleIcon } from '@/Components/Icons';
+import ReCAPTCHA from 'react-google-recaptcha';
+
 
 export default function Register() {
   const page = useTypedPage();
   const route = useRoute();
+  const captcha = useRef<ReCAPTCHA>(null);
+  const [reCAPTCHAValidated, setReCAPTCHAValidated] = useState(false);
+  const [alertMessage, setAlertMessage] = useState<string | null>(null);
+  const [val, setVal] = useState();
+
+  const onChangeRe = (value: string | null) => {
+    if (value) {
+      setReCAPTCHAValidated(true);
+      console.log(value)
+    }
+  };
+
+
   const form = useForm({
     name: '',
     email: '',
@@ -23,11 +38,21 @@ export default function Register() {
     terms: false,
   });
 
+
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    form.post(route('register'), {
-      onFinish: () => form.reset('password', 'password_confirmation'),
-    });
+
+    if (reCAPTCHAValidated) {
+        // Envoyer le formulaire si ReCAPTCHA a été validé
+        // Exemple de fonction post() à ajuster selon votre environnement
+        form.post(route('register'), {
+            onFinish: () => form.reset('password', 'password_confirmation'),
+          });
+      } else {
+        // Afficher un message d'erreur ou prendre une autre action appropriée
+        setAlertMessage('Vérifier que vous n\'etes pas un robot');
+      }
+
   }
 
   return (
@@ -38,8 +63,8 @@ export default function Register() {
 
       <div className='flex flex-col gap-3'>
         <SecondaryButton className='rounded-full'>
-          <a 
-            href="/connect/google" 
+          <a
+            href="/connect/google"
             className='flex justify-center items-center gap-x-3 w-full h-full p-[10px]'
           >
             <GoogleIcon />
@@ -47,9 +72,9 @@ export default function Register() {
           </a>
         </SecondaryButton>
         <SecondaryButton className='rounded-full'>
-          <a 
-            href="/connect/discord" 
-            className='flex justify-center items-center gap-x-3 w-full h-full p-[10px]' 
+          <a
+            href="/connect/discord"
+            className='flex justify-center items-center gap-x-3 w-full h-full p-[10px]'
           >
             <DiscordIcon />
             S'inscrire avec discord
@@ -57,7 +82,7 @@ export default function Register() {
         </SecondaryButton>
       </div>
 
-      <div className='flex items-center mt-4 mb-2'> 
+      <div className='flex items-center mt-4 mb-2'>
         <div className='h-px bg-black w-1/2'></div>
         <p className='ml-2 mr-2'>Ou</p>
         <div className='h-px bg-black w-1/2'></div>
@@ -126,6 +151,12 @@ export default function Register() {
             message={form.errors.password_confirmation}
           />
         </div>
+        <ReCAPTCHA
+            ref={captcha} //ettape 2
+            sitekey='6LdLyc8pAAAAAC3dnLY2LFmI_axYGJvNHVjCN61l' onChange={onChangeRe}
+            className="mt-3 block w-full"
+            />
+            {alertMessage && <p className='text-red-600'>{alertMessage}</p>}
 
         {page.props.jetstream.hasTermsAndPrivacyPolicyFeature && (
           <div className="mt-4">
@@ -170,7 +201,7 @@ export default function Register() {
           S'inscrire
         </PrimaryButton>
         <p className='mt-12 text-center'>
-          Vous avez deja un compte ? 
+          Vous avez deja un compte ?
           <Link
             href={route('login')}
             className="ml-2 underline text-sm text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
