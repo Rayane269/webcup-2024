@@ -59,8 +59,8 @@ export default function Login({ canResetPassword, status }: Props) {
         </div>
       )}
 
-      <h1 className='md:mt-3 mb-7 text-4xl md:text-6xl font-webcup'>ça se passe maintenant</h1>
-      <h1 className='mb-5 text-2xl md:text-4xl font-bold'>Connectez vous</h1>
+      <h1 className='md:mt-3 mb-7 text-4xl md:text-6xl font-webcup text-center'>ça se passe maintenant</h1>
+      <h1 className='mb-5 text-2xl md:text-4xl font-bold text-center'>Connectez vous</h1>
 
       <div className='flex flex-col gap-3'>
         <SecondaryButton className='rounded-full'>
