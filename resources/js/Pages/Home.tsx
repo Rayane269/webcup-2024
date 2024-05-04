@@ -20,6 +20,7 @@ import {
 
 import headphone from "$/storage/hero/headphone.png";
 import smartwatch2 from "$/storage/category/smartwatch2-removebg-preview.png";
+import { Structure } from '@/Layouts/Structure';
 
 interface Props {
   canLogin: boolean;
@@ -108,18 +109,21 @@ export default function Home({
     <>
       <Head title="Bienvenu - Mystical market" />
       <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 overflow-hidden">
-        <Navbar handleOrderPopup={handleOrderPopup} />
-        <Hero handleOrderPopup={handleOrderPopup} />
-        <Category />
-        <Category2 />
-        <Services />
-        <Banner data={BannerData} />
-        <Products />
-        <Banner data={BannerData2} />
-        <Blogs />
-        <Partners />
-        <Footer />
-        <Popup orderPopup={orderPopup} handleOrderPopup={handleOrderPopup} />
+        <Structure 
+          orderPopup={orderPopup}
+          handleOrderPopup={handleOrderPopup}
+          canLogin={canLogin}
+        >
+          <Hero handleOrderPopup={handleOrderPopup} />
+          <Category />
+          <Category2 />
+          <Services />
+          <Banner data={BannerData} />
+          <Products />
+          <Banner data={BannerData2} />
+          <Blogs />
+          <Partners />
+        </Structure>
       </div>
     </>
   );
