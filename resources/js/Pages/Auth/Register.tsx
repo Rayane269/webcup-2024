@@ -59,7 +59,7 @@ export default function Register() {
     <AuthenticationCard>
       <Head title="Register" />
 
-      <h1 className='mb-12 text-3xl md:text-4xl font-bold'>Inscrivez vous</h1>
+      <h1 className='mb-12 text-3xl md:text-4xl font-bold text-center'>Inscrivez vous</h1>
 
       <div className='flex flex-col gap-3'>
         <SecondaryButton className='rounded-full'>
@@ -90,7 +90,7 @@ export default function Register() {
 
       <form onSubmit={onSubmit}>
         <div>
-          <InputLabel htmlFor="name">Name</InputLabel>
+          <InputLabel htmlFor="name">Nom complet</InputLabel>
           <TextInput
             id="name"
             type="text"
@@ -118,7 +118,7 @@ export default function Register() {
         </div>
 
         <div className="mt-4">
-          <InputLabel htmlFor="password">Password</InputLabel>
+          <InputLabel htmlFor="password">Mot de passe</InputLabel>
           <TextInput
             id="password"
             type="password"
@@ -133,7 +133,7 @@ export default function Register() {
 
         <div className="mt-4">
           <InputLabel htmlFor="password_confirmation">
-            Confirm Password
+            Confirmer le mot de passe
           </InputLabel>
           <TextInput
             id="password_confirmation"

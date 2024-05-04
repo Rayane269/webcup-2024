@@ -1,6 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
+import tailwindGridArea from './resources/tailwindcss/tailwind-grid-area'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -26,6 +27,10 @@ export default {
             },
         },
     },
+
+    presets: [
+        tailwindGridArea,
+    ],
 
     plugins: [forms, typography],
 };

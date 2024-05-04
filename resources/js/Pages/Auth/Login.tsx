@@ -61,8 +61,8 @@ export default function Login({ canResetPassword, status }: Props) {
         </div>
       )}
 
-      <h1 className='md:mt-3 mb-7 text-4xl md:text-6xl font-webcup'>ça se passe maintenant</h1>
-      <h1 className='mb-5 text-2xl md:text-4xl font-bold'>Connectez vous</h1>
+      <h1 className='md:mt-3 mb-7 text-4xl md:text-6xl font-webcup text-center'>Tout se passe maintenant</h1>
+      <h1 className='mb-5 text-2xl md:text-4xl font-bold text-center'>Connectez vous</h1>
 
       <div className='flex flex-col gap-3'>
         <SecondaryButton className='rounded-full'>
@@ -109,7 +109,7 @@ export default function Login({ canResetPassword, status }: Props) {
         </div>
 
         <div className="mt-4">
-          <InputLabel htmlFor="password">Password</InputLabel>
+          <InputLabel htmlFor="password">Mot de passe</InputLabel>
           <TextInput
             id="password"
             type="password"
@@ -138,7 +138,7 @@ export default function Login({ canResetPassword, status }: Props) {
             />
 
             <span className="ml-2 text-sm text-gray-600">
-              Remember me
+              Me reconnaître
             </span>
           </label>
         </div>
