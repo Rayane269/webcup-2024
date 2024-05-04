@@ -108,7 +108,7 @@ export default function Home({
     <>
       <Head title="Bienvenu - Mystical market" />
       <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 overflow-hidden">
-        <Navbar handleOrderPopup={handleOrderPopup} />
+        <Navbar handleOrderPopup={handleOrderPopup} canLogin={canLogin} />
         <Hero handleOrderPopup={handleOrderPopup} />
         <Category />
         <Category2 />
