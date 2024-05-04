@@ -1,6 +1,6 @@
 import { Link, useForm, Head } from '@inertiajs/react';
 import classNames from 'classnames';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import useRoute from '@/Hooks/useRoute';
 import AuthenticationCard from '@/Components/AuthenticationCard';
 import Checkbox from '@/Components/Checkbox';
@@ -10,6 +10,7 @@ import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
 import SecondaryButton from '@/Components/SecondaryButton';
 import { GoogleIcon, DiscordIcon} from '@/Components/Icons';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 interface Props {
   canResetPassword: boolean;
@@ -18,17 +19,34 @@ interface Props {
 
 export default function Login({ canResetPassword, status }: Props) {
   const route = useRoute();
+  const captcha = useRef<ReCAPTCHA>(null);
+  const [reCAPTCHAValidated, setReCAPTCHAValidated] = useState(false);
+  const [val, setVal] = useState();
+
   const form = useForm({
     email: '',
     password: '',
     remember: '',
   });
+  const onChangeRe = (value: string | null) => {
+    if (value) {
+      setReCAPTCHAValidated(true);
+      console.log(value)
+    }
+  };
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    form.post(route('login'), {
-      onFinish: () => form.reset('password'),
-    });
+    if (reCAPTCHAValidated) {
+        // Envoyer le formulaire si ReCAPTCHA a été validé
+        // Exemple de fonction post() à ajuster selon votre environnement
+        form.post(route('login'), {
+          onFinish: () => form.reset('password'),
+        });
+      } else {
+        // Afficher un message d'erreur ou prendre une autre action appropriée
+        alert('Veuillez cocher ReCAPTCHA avant de soumettre le formulaire.');
+      }
   }
 
   return (
@@ -46,8 +64,8 @@ export default function Login({ canResetPassword, status }: Props) {
 
       <div className='flex flex-col gap-3'>
         <SecondaryButton className='rounded-full'>
-          <a 
-            href="/connect/google" 
+          <a
+            href="/connect/google"
             className='flex justify-center items-center gap-x-3 w-full h-full p-[10px]'
           >
             <GoogleIcon />
@@ -55,8 +73,8 @@ export default function Login({ canResetPassword, status }: Props) {
           </a>
         </SecondaryButton>
         <SecondaryButton className='rounded-full'>
-          <a 
-            href="/connect/discord" 
+          <a
+            href="/connect/discord"
             className='flex justify-center items-center gap-x-3 w-full h-full p-[10px]'
           >
             <DiscordIcon />
@@ -65,7 +83,7 @@ export default function Login({ canResetPassword, status }: Props) {
         </SecondaryButton>
       </div>
 
-      <div className='flex items-center mt-4 mb-2'> 
+      <div className='flex items-center mt-4 mb-2'>
         <div className='h-px bg-black w-1/2'></div>
         <p className='ml-2 mr-2'>Ou</p>
         <div className='h-px bg-black w-1/2'></div>
@@ -73,6 +91,8 @@ export default function Login({ canResetPassword, status }: Props) {
 
       <form onSubmit={onSubmit}>
         <div>
+
+
           <InputLabel htmlFor="email">Email</InputLabel>
           <TextInput
             id="email"
@@ -99,7 +119,11 @@ export default function Login({ canResetPassword, status }: Props) {
           />
           <InputError className="mt-2" message={form.errors.password} />
         </div>
-
+        <ReCAPTCHA
+            ref={captcha} //ettape 2
+            sitekey='6LdLyc8pAAAAAC3dnLY2LFmI_axYGJvNHVjCN61l' onChange={onChangeRe}
+            className="mt-3 block w-full"
+            />
         <div className="mt-4">
           <label className="flex items-center">
             <Checkbox
@@ -109,6 +133,7 @@ export default function Login({ canResetPassword, status }: Props) {
                 form.setData('remember', e.currentTarget.checked ? 'on' : '')
               }
             />
+
             <span className="ml-2 text-sm text-gray-600">
               Remember me
             </span>
@@ -135,7 +160,7 @@ export default function Login({ canResetPassword, status }: Props) {
           )}
         </div>
         <p className='mt-12 text-center'>
-          Vous n'avez pas de compte ? 
+          Vous n'avez pas de compte ?
           <Link
             href={route('register')}
             className="ml-2 underline text-sm text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
