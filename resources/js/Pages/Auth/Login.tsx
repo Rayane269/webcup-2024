@@ -21,7 +21,6 @@ export default function Login({ canResetPassword, status }: Props) {
   const route = useRoute();
   const captcha = useRef<ReCAPTCHA>(null);
   const [reCAPTCHAValidated, setReCAPTCHAValidated] = useState(false);
-  const [val, setVal] = useState();
   const [alertMessage, setAlertMessage] = useState<string | null>(null);
 
   const form = useForm({
