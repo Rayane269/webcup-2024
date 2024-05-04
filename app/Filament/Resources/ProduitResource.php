@@ -28,7 +28,9 @@ class ProduitResource extends Resource
 {
     protected static ?string $model = Produit::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
+
+    protected static ?string $navigationGroup = 'Actions';
 
     public static function form(Form $form): Form
     {
@@ -73,12 +75,16 @@ class ProduitResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nom'),
-                TextColumn::make('description'),
-                TextColumn::make('prix'),
+                TextColumn::make('nom')
+                ->searchable(),
+                TextColumn::make('description')
+                ->searchable(),
+                TextColumn::make('prix')
+                ->searchable(),
                 SelectColumn::make('categorie')
                 ->options(Category::all()->pluck('nom'))
-                ->rules(['required']),
+                ->rules(['required'])
+                ->searchable(),
                 
                 ToggleColumn::make('disponibilite')
                 ->onColor('success')
