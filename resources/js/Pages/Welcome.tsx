@@ -6,7 +6,6 @@ import { HeaderLinks } from '@/Components/HeaderLinks';
 import { Structure } from '@/Layouts/Structure';
 import { CardCategories, Categories } from '@/Components/Categories';
 import { Articles, Products, Title } from '@/Components/Articles';
-import path from 'path';
 
 interface Props {
   canLogin: boolean;
@@ -57,7 +56,7 @@ export default function Welcome({
       <Structure>
         <HeaderLinks />
 
-        <div className='py-6 px-16 bg-slate-100'>
+        <div className='md:py-6 px-5 md:px-16 bg-slate-100'>
           <Categories data={data.bestCategories} />
           <Articles>
             <Title text='Offre à ne pas rater' />

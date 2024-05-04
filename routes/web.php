@@ -8,10 +8,9 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\FacebookController;
-use App\Http\Middleware\SetLocale;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Home', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
