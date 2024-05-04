@@ -21,7 +21,7 @@ export default function Login({ canResetPassword, status }: Props) {
   const route = useRoute();
   const captcha = useRef<ReCAPTCHA>(null);
   const [reCAPTCHAValidated, setReCAPTCHAValidated] = useState(false);
-  const [val, setVal] = useState();
+  const [alertMessage, setAlertMessage] = useState<string | null>(null);
 
   const form = useForm({
     email: '',
@@ -45,7 +45,8 @@ export default function Login({ canResetPassword, status }: Props) {
         });
       } else {
         // Afficher un message d'erreur ou prendre une autre action appropriée
-        alert('Veuillez cocher ReCAPTCHA avant de soumettre le formulaire.');
+        setAlertMessage('Vérifier que vous n\'etes pas un robot');
+
       }
   }
 
@@ -124,6 +125,7 @@ export default function Login({ canResetPassword, status }: Props) {
             sitekey='6LdLyc8pAAAAAC3dnLY2LFmI_axYGJvNHVjCN61l' onChange={onChangeRe}
             className="mt-3 block w-full"
             />
+        {alertMessage && <p className='text-red-600'>{alertMessage}</p>}
         <div className="mt-4">
           <label className="flex items-center">
             <Checkbox
