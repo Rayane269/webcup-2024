@@ -107,7 +107,7 @@ export default function Login({ canResetPassword, status }: Props) {
         </div>
 
         <div className="mt-4">
-          <InputLabel htmlFor="password">Password</InputLabel>
+          <InputLabel htmlFor="password">Mot de passe</InputLabel>
           <TextInput
             id="password"
             type="password"
@@ -135,7 +135,7 @@ export default function Login({ canResetPassword, status }: Props) {
             />
 
             <span className="ml-2 text-sm text-gray-600">
-              Remember me
+              Me reconnaître
             </span>
           </label>
         </div>
