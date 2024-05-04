@@ -4,6 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import { Structure } from '@/Layouts/Structure';
+import { ProductDetails } from '@/Components/App/Products/ProductDetails';
 
 interface Props {
   canLogin: boolean;
@@ -40,7 +41,7 @@ export default function ShowProduct({canLogin}: Props) {
           canLogin={canLogin}
         >
           <div className='container'>
-            <h1>Show product</h1>
+            <ProductDetails />
           </div>
         </Structure>
       </div>

@@ -34,6 +34,7 @@ export default {
                 brandWhite: "#eeeeee",
                 
             },
+            
         },
         container: {
             center: true,

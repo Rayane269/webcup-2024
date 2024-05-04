@@ -108,7 +108,7 @@ export default function Home({
           handleOrderPopup={handleOrderPopup}
           canLogin={canLogin}
         >
-          <Hero handleOrderPopup={handleOrderPopup} />
+          {canLogin && <Hero handleOrderPopup={handleOrderPopup} />}
           <Category />
           <Category2 />
           <Services />

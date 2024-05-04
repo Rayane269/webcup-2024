@@ -29,6 +29,9 @@ dependencies:
   classnames:
     specifier: ^2.5.1
     version: 2.5.1
+  gsap:
+    specifier: ^3.12.5
+    version: 3.12.5
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
@@ -1229,6 +1232,10 @@ packages:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
     dependencies:
       get-intrinsic: 1.2.4
+    dev: false
+
+  /gsap@3.12.5:
+    resolution: {integrity: sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ==}
     dev: false
 
   /has-flag@3.0.0:
