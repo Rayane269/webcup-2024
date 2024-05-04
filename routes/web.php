@@ -2,24 +2,17 @@
 
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\FacebookController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Product\FilterProductsController;
 
-Route::get('/', function () {
-    return Inertia::render('Home', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/teams', [TeamsController::class, 'index'])->name('teams');
@@ -41,7 +34,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        return Inertia::render('Home');
     })->name('dashboard');
 });
 

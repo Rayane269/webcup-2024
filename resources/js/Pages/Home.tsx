@@ -56,12 +56,7 @@ const BannerData2 = {
 
 export default function Home({
   canLogin,
-  canRegister,
-  laravelVersion,
-  phpVersion,
 }: Props) {
-  const route = useRoute();
-  const page = useTypedPage();
   const data = {
     bestCategories: [
       {id: 1, label: "Livre magique", path: 'login'},
@@ -90,7 +85,6 @@ export default function Home({
   }
 
   const [orderPopup, setOrderPopup] = React.useState(false);
-
   const handleOrderPopup = () => {
     setOrderPopup(!orderPopup);
   };

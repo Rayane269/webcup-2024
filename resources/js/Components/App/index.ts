@@ -13,6 +13,7 @@ import Partners from "./Partners/Partners"
 import Popup from "./Popup/Popup"
 import Blogs from "./Blogs/Blogs"
 import Footer from "./Footer/Footer"
+import { Profile } from "./Navbar/Profile"
 
 export {
   Navbar,
@@ -29,5 +30,6 @@ export {
   Partners,
   Popup,
   Blogs,
-  Footer
+  Footer,
+  Profile
 }
