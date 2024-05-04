@@ -21,6 +21,8 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Actions';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -29,7 +31,6 @@ class CategoryResource extends Resource
                 ->minLength(2)
                 ->maxLength(50)
                 ->required()
-               
                 ->unique(),
               
             ]);

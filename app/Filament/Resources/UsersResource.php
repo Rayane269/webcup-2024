@@ -18,7 +18,8 @@ class UsersResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static ?string $navigationGroup = 'Settings';
 
     public static function form(Form $form): Form
     {
@@ -33,10 +34,13 @@ class UsersResource extends Resource
         return $table
             ->columns([
                
-                    TextColumn::make('name'),
-                    TextColumn::make('email'),
+                    TextColumn::make('name')
+                    ->searchable(),
+                    TextColumn::make('email')
+                    ->searchable(),
                 TextColumn::make('created_at')
-                ->dateTime(),
+                ->dateTime()
+                ->searchable(),
                 
                 
             ])
