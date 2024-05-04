@@ -1,6 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
+import tailwindGridArea from './resources/tailwindcss/tailwind-grid-area'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -11,7 +12,7 @@ export default {
         './resources/views/**/*.blade.php',
         './resources/js/**/*.tsx',
     ],
-
+    darkMode: "class",
     theme: {
         extend: {
             fontFamily: {
@@ -24,8 +25,28 @@ export default {
                 'lato-black': ['"Lato Black"'],
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                primary: "#f42c37",
+                secondary: "#f42c37",
+                brandYellow: "#fdc62e",
+                brandGreen: "#2dcc6f",
+                brandBlue: "#1376f4",
+                brandWhite: "#eeeeee",
+                
+            },
+        },
+        container: {
+            center: true,
+            padding: {
+                DEFAULT: "1rem",
+                sm: "3rem",
+            },
         },
     },
+
+    presets: [
+        tailwindGridArea,
+    ],
 
     plugins: [forms, typography],
 };
