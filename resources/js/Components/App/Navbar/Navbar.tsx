@@ -4,68 +4,73 @@ import { FaCaretDown, FaCartShopping } from "react-icons/fa6";
 import DarkMode from "../DarkMode";
 import { Link } from "@inertiajs/react";
 import useRoute from "@/Hooks/useRoute";
+import Dropdown from "@/Components/Dropdown";
+import DropdownLink from "@/Components/DropdownLink";
+import useTypedPage from "@/Hooks/useTypedPage";
+import { router } from "@inertiajs/core";
+import { Profile } from "./Profile";
 
-const MenuLinks = [
-  {
-    id: 1,
-    name: "Home",
-    link: "/#",
-  },
-
-  {
-    id: 3,
-    name: "About",
-    link: "/#about",
-  },
-  {
-    id: 2,
-    name: "Equipe",
-    link: "/#shop",
-  }
-];
 
 type Props = {
-  handleOrderPopup: () => void,
+  handleOrderPopup?: () => void,
   canLogin: boolean
 }
 
 export const Navbar = ({ handleOrderPopup, canLogin }: Props) => {
   const route = useRoute()
-
+  const MenuLinks = [
+    {
+      id: 1,
+      name: "Home",
+      link: "/",
+    },
+  
+    {
+      id: 3,
+      name: "About",
+      link: route('about'),
+    },
+    {
+      id: 2,
+      name: "Equipe",
+      link: route('teams'),
+    }
+  ];
+  
   return (
     <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40">
       <div className="py-4">
         <div className="container flex justify-between items-center">
           {/* Logo and Links section */}
           <div className="flex items-center gap-4">
-            <a
-              href="#"
+            <Link
+              href="/"
               className="text-black dark:text-white font-webcup tracking-widest text-2xl uppercase sm:text-3xl"
             >
-              M Market
-            </a>
+              Mystical M
+            </Link>
             {/* Menu Items */}
-            <div className="flex items-center gap-4">
-              <ul className="hidden lg:flex items-center gap-4">
-                {MenuLinks.map((data) => (
-                  <li key={data.id}>
-                    <a
-                      href={data.link}
-                      className="inline-block px-4 font-semibold text-gray-500 hover:text-black dark:hover:text-white duration-200"
-                    >
-                      {data.name}
-                    </a>
-                  </li>
-                ))}  
-              </ul>
-              {canLogin && (
+            {canLogin && (
+              <div className="flex items-center gap-4">
+                <ul className="hidden lg:flex items-center gap-4">
+                  {MenuLinks.map((data) => (
+                    <li key={data.id}>
+                      <Link
+                        href={data.link}
+                        className="inline-block px-4 font-semibold text-gray-500 hover:text-black dark:hover:text-white duration-200"
+                      >
+                        {data.name}
+                      </Link>
+                    </li>
+                  ))}  
+                </ul>
                 <button className="bg-black text-white px-4 p-2 rounded-full">
                   <Link className="font-bold" href={route('login')}>
                     Se connecter
                   </Link>
                 </button>
-              )}
-            </div>
+              </div>
+            )}
           </div>
 
           {/* Navbar Right section */}
@@ -93,6 +98,10 @@ export const Navbar = ({ handleOrderPopup, canLogin }: Props) => {
             <div>
               <DarkMode />
             </div>
+
+            {/* Avatar */}
+            {!canLogin && <Profile />}
+            
           </div>
         </div>
       </div>

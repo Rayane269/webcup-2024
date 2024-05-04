@@ -3,8 +3,8 @@ import { IoCloseOutline } from "react-icons/io5";
 import Button from "../Shared/Button";
 
 type Props = {
-  orderPopup: boolean,
-  handleOrderPopup: () => void
+  orderPopup?: boolean,
+  handleOrderPopup?: () => void
 }
 
 const Popup = ({ orderPopup, handleOrderPopup }: Props) => {
