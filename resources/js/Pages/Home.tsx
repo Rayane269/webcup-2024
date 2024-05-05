@@ -89,16 +89,16 @@ export default function Home({
   products,
   categories
 }: Props) {
-  
   const [orderPopup, setOrderPopup] = React.useState(false);
   
   const productHydrate: ProductHydrateType[]  = products.map((product, index) => ({
     id: product.id,
-    img: `$/storage/${product.image_url}`,
+    img: `storage/${product.image_url}`,
     title: product.nom,
     price: product.prix,
     aosDelay: `${Number(index * 100)}`
   }))
+  
   const handleOrderPopup = () => {
     setOrderPopup(!orderPopup);
   }
