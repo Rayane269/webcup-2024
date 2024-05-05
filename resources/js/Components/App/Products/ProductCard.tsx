@@ -1,5 +1,7 @@
 import React from "react";
 import Button from "../Shared/Button";
+import { router } from "@inertiajs/core";
+import useRoute from "@/Hooks/useRoute";
 
 type Props = {
   data: Array<{
@@ -12,6 +14,8 @@ type Props = {
 }
 
 const ProductCard = ({ data }: Props) => {
+  const route = useRoute()
+
   return (
     <div className="mb-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 place-items-center">
@@ -41,6 +45,7 @@ const ProductCard = ({ data }: Props) => {
                     text={"Voir details"}
                     bgColor={"bg-brandBlue"}
                     textColor={"text-white"}
+                    handler={() => router.get(route('show_product', data.id))}
                   />
                 </div>
               </div>

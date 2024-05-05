@@ -25,8 +25,8 @@ export const ProductDetails = function() {
   const [amount, setAmount] = useState(1);
 
   return (
-    <div className='flex justify-between gap-16 mt-11'>
-      <div className='lg:w-2/4 h-96 flex items-center justify-center'>
+    <div className='lg:flex justify-between gap-16 mt-11'>
+      <div className='lg:w-2/4 h-96 flex mb-10 items-center justify-center'>
         <img src={activeImg} alt="" className='w-full h-full aspect-square object-cover rounded-xl'/>
       </div>
       {/* ABOUT */}

@@ -4,6 +4,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import { Structure } from '@/Layouts/Structure';
+import { ProductCard, Products, Sidebar } from '@/Components/App';
+import { ProductsData } from '../Home';
 
 interface Props {
   canLogin: boolean;
@@ -30,6 +32,10 @@ export default function FilterProducts({canLogin}: Props) {
     AOS.refresh();
   }, []);
 
+  const handleChange = () => {
+    console.log('salut')
+  }
+
   return (
     <>
       <Head title="Filter products" />
@@ -40,7 +46,8 @@ export default function FilterProducts({canLogin}: Props) {
           canLogin={canLogin}
         >
           <div className='container'>
-            <h1>Filter</h1>
+            <Sidebar handleChange={handleChange}  />
+            <ProductCard data={ProductsData}  />
           </div>
         </Structure>
       </div>
