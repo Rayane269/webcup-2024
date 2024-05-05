@@ -1,12 +1,11 @@
 import React from 'react';
-import { Head, Link } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 import { Structure } from '@/Layouts/Structure';
 import { useStoreOrder } from '@/Components/App/Order/order.store';
-import { ProductType, useProductStore } from '@/Components/App/Products/product.store';
-import { ProductsData } from '../Home';
+import { ProductType } from '@/Components/App/Products/product.store';
 
 interface Props {
   canLogin: boolean;
@@ -15,6 +14,76 @@ interface Props {
   phpVersion: string;
   data: []
 }
+
+
+// images import
+import Img1 from "$/storage/product/p-1.jpg";
+import Img2 from "$/storage/product/p-2.jpg";
+import Img3 from "$/storage/product/p-3.jpg";
+import Img4 from "$/storage/product/p-4.jpg";
+import Img5 from "$/storage/product/p-5.jpg";
+import Img6 from "$/storage/product/p-9.jpg";
+import Img7 from "$/storage/product/p-7.jpg";
+
+const ProductsData = [
+  {
+    id: 1,
+    img: Img1,
+    title: "Boat Headphone",
+    price: "120",
+    aosDelay: "0",
+  },
+  {
+    id: 2,
+    img: Img2,
+    title: "Rocky Mountain",
+    price: "420",
+    aosDelay: "200",
+  },
+  {
+    id: 3,
+    img: Img3,
+    title: "Goggles",
+    price: "320",
+    aosDelay: "400",
+  },
+  {
+    id: 4,
+    img: Img4,
+    title: "Printed ",
+    price: "220",
+    aosDelay: "600",
+  },
+  {
+    id: 5,
+    img: Img5,
+    title: "Boat Headphone",
+    price: "120",
+    aosDelay: "0",
+  },
+  {
+    id: 6,
+    img: Img6,
+    title: "Rocky Mountain",
+    price: "420",
+    aosDelay: "200",
+  },
+  {
+    id: 7,
+    img: Img7,
+    title: "Goggles",
+    price: "320",
+    aosDelay: "400",
+  },
+  {
+    id: 8,
+    img: Img5,
+    title: "Printed ",
+    price: "220",
+    aosDelay: "600",
+  },
+]
+
 
 export default function Order({canLogin}: Props) {
   const [orderPopup, setOrderPopup] = React.useState(false);
