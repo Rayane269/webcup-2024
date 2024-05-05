@@ -24,7 +24,7 @@ export const Category = ({data}: {data: Array<CategoryType>}) => {
                   {data[0].label}
                 </p>
                 <Button
-                  text="Browse"
+                  text="Parcourir"
                   bgColor={"bg-primary"}
                   textColor={"text-white"}
                   handler={() => router.get(route('filter_products'))}
@@ -43,9 +43,10 @@ export const Category = ({data}: {data: Array<CategoryType>}) => {
                   {data[1].label}
                 </p>
                 <Button
-                  text="Browse"
+                  text="Parcourir"
                   bgColor={"bg-white"}
                   textColor={"text-brandYellow"}
+                  handler={() => router.get(route('filter_products'))}
                 />
               </div>
             </div>
@@ -65,9 +66,10 @@ export const Category = ({data}: {data: Array<CategoryType>}) => {
                   {data[2].label}
                 </p>
                 <Button
-                  text="Browse"
+                  text="Parcourir"
                   bgColor={"bg-white"}
                   textColor={"text-primary"}
+                  handler={() => router.get(route('filter_products'))}
                 />
               </div>
             </div>

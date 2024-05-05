@@ -38,6 +38,10 @@ export default function Order({canLogin}: Props) {
     AOS.refresh();
   }, []);
 
+  const totalPrix = Array.from(selectOrders).reduce((total, order) => {
+    return total + order.price;
+  }, 0);
+
   return (
     <>
       <Head title="Show product" />
@@ -53,8 +57,11 @@ export default function Order({canLogin}: Props) {
               <div className='w-3/5'>
                 {selectOrders.map(order => <ShowOrder key={order.id} order={order} />)}
               </div>
-              <div className='md:w-[380px] bg-slate-100 rounded-md'>
-
+              <div className='md:w-[380px] p-5 bg-slate-100 rounded-md'>
+                <div className='flex justify-between items-center'>
+                  <span>Total : </span>
+                  <span className='text-3xl text-primary'>{totalPrix}</span>
+                </div>
               </div>
             </div>
           </div>

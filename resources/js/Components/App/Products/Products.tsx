@@ -10,12 +10,12 @@ type Product = {
   aosDelay: string,
 }
 
-const Products = ({data}: {data: Array<Product>}) => {
+const Products = ({data, title, subtitle}: {data: Array<Product>, title?: string, subtitle?: string}) => {
   return (
     <div>
       <div className="container">
         {/* Header section */}
-        <Heading title="Our Products" subtitle={"Explore Our Products"} />
+        <Heading title={title ?? "Nos Produits"} subtitle={subtitle ?? "Découvrez Nos Produits"} />
         {/* Body section */}
         <ProductCard data={data} />
       </div>

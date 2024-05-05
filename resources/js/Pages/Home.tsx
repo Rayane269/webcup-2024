@@ -31,9 +31,9 @@ interface Props {
 }
 
 const BannerData = {
-  discount: "30% OFF",
-  title: "Fine Smile",
-  date: "10 Jan to 28 Jan",
+  discount: "30% DE REMISE",
+  title: "Beau Sourire",
+  date: "Du 10 janvier au 28 janvier",
   image: headphone,
   title2: "Air Solo Bass",
   title3: "Winter Sale",
@@ -147,32 +147,6 @@ export default function Home({
   canLogin,
 }: Props) {
   
-  const data = {
-    bestCategories: [
-      {id: 1, label: "Livre magique", path: 'login'},
-      {id: 2, label: "Livre enchanté", path: 'login'},
-      {id: 3, label: "Bague magique", path: 'login'},
-      {id: 4, label: "collier magique", path: 'login'},
-    ],
-    offres: [
-      {id: 1, name: "Yoyo yoyoy"},
-      {id: 2, name: "Ha aha aahah"},
-      {id: 3, name: "Va va va"},
-      {id: 4, name: "Bof Bof Fob"},
-    ],
-    bestProducts: [
-      {id: 1, name: "Alibaba au pays magique"},
-      {id: 2, name: "Va te faire foutre"},
-      {id: 3, name: "Connard va !"},
-      {id: 4, name: "Bordel fout moi !"},
-    ],
-    likelyInterested: [
-      {id: 1, name: "Livre bof je ne sais pas"},
-      {id: 2, name: "PHP c'est de la merde"},
-      {id: 3, name: "Mec lache nous putain"},
-      {id: 4, name: "Va te faire foutre"},
-    ]
-  }
 
   const addProduct = useProductStore(state => state.addProduct)
   //ProductsData.forEach(product => addProduct({id: product.id, title: product.title, price: Number(product.price)}))
@@ -208,7 +182,7 @@ export default function Home({
           <Banner data={BannerData} />
           <Products data={ProductsData} />
           <Banner data={BannerData2} />
-          <Blogs />
+          <Products data={ProductsData} title="Nos promos" subtitle="Decouvrez nos promotions" />
           <Partners />
         </Structure>
       </div>

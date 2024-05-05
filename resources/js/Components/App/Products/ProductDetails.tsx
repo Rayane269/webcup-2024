@@ -36,7 +36,6 @@ export const ProductDetails = function() {
       {/* ABOUT */}
       <div className='flex flex-col gap-4 lg:w-2/4'>
         <div>
-          <span className=' text-violet-600 font-semibold'>Special Sneaker</span>
           <h1 className='text-3xl font-bold'>{product.name}</h1>
         </div>
         <div>

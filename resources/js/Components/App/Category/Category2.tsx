@@ -1,8 +1,12 @@
 import React from "react";
 import Button from "../Shared/Button";
 import { CategoryType } from "./Category";
+import useRoute from "@/Hooks/useRoute";
+import { router } from "@inertiajs/core";
 
 export const Category2 = ({data}: {data: Array<CategoryType>}) => {
+  const route = useRoute()
+
   return (
     <div className="py-8">
       <div className="container">
@@ -17,9 +21,10 @@ export const Category2 = ({data}: {data: Array<CategoryType>}) => {
                   {data[0].label}
                 </p>
                 <Button
-                  text="Browse"
+                  text="Parcourir"
                   bgColor={"bg-primary"}
                   textColor={"text-white"}
+                  handler={() => router.get(route('filter_products'))}
                 />
               </div>
             </div>
@@ -39,9 +44,10 @@ export const Category2 = ({data}: {data: Array<CategoryType>}) => {
                   {data[1].label}
                 </p>
                 <Button
-                  text="Browse"
+                  text="Parcourir"
                   bgColor={"bg-white"}
                   textColor={"text-brandGreen"}
+                  handler={() => router.get(route('filter_products'))}
                 />
               </div>
             </div>
@@ -57,7 +63,8 @@ export const Category2 = ({data}: {data: Array<CategoryType>}) => {
                   {data[2].label}
                 </p>
                 <Button
-                  text="Browse"
+                  handler={() => router.get(route('filter_products'))}
+                  text="Parcourir"
                   bgColor={"bg-white"}
                   textColor={"text-brandBlue"}
                 />
