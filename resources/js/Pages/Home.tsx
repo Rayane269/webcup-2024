@@ -6,16 +6,16 @@ import { Navbar } from '@/Components/App/Navbar/Navbar';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Hero } from '@/Components/App/Hero';
-import { 
-  Banner, 
-  Blogs, 
-  Category, 
-  Category2, 
-  Footer, 
-  Partners, 
-  Popup, 
-  Products, 
-  Services 
+import {
+  Banner,
+  Blogs,
+  Category,
+  Category2,
+  Footer,
+  Partners,
+  Popup,
+  Products,
+  Services
 } from '@/Components/App';
 
 import headphone from "$/storage/hero/headphone.png";
@@ -27,8 +27,15 @@ interface Props {
   canRegister: boolean;
   laravelVersion: string;
   phpVersion: string;
-  data: []
+  data: [],
+  products: []
 }
+interface Product {
+    id: number;
+    name: string;
+    price: number;
+    // Ajoutez d'autres propriétés si nécessaire
+  }
 
 const BannerData = {
   discount: "30% OFF",
@@ -102,8 +109,12 @@ export default function Home({
   return (
     <>
       <Head title="Bienvenu - Mystical market" />
+      <ul>
+
+      </ul>
+
       <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 overflow-hidden">
-        <Structure 
+        <Structure
           orderPopup={orderPopup}
           handleOrderPopup={handleOrderPopup}
           canLogin={canLogin}
