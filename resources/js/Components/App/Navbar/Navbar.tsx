@@ -9,11 +9,8 @@ import DropdownLink from "@/Components/DropdownLink";
 import useTypedPage from "@/Hooks/useTypedPage";
 import { router } from "@inertiajs/core";
 import { Profile } from "./Profile";
-<<<<<<< HEAD
 import ApplicationLogo from "@/Components/ApplicationLogo";
-=======
 import { useStoreOrder } from "../Order/order.store";
->>>>>>> b9fc0d14629f523daa290d45c03118b83463fe75
 
 
 type Props = {
