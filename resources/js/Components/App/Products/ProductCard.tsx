@@ -31,11 +31,18 @@ const ProductCard = ({ data }: Props) => {
               />
               {/* hover button */}
               <div className="hidden group-hover:flex absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 h-full w-full text-center group-hover:backdrop-blur-sm justify-center items-center duration-200 rounded-md">
-                <Button
-                  text={"Add to cart"}
-                  bgColor={"bg-primary"}
-                  textColor={"text-white"}
-                />
+                <div className="flex flex-col gap-y-1">
+                  <Button
+                    text={"Ajoutez au panier"}
+                    bgColor={"bg-primary"}
+                    textColor={"text-white"}
+                  />
+                  <Button
+                    text={"Voir details"}
+                    bgColor={"bg-brandBlue"}
+                    textColor={"text-white"}
+                  />
+                </div>
               </div>
             </div>
             <div className="leading-7">

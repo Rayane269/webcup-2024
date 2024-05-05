@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('promossions', function (Blueprint $table) {
             $table->id();
             $table->integer('product_id');
-            $table->dateTime('date_debut');
+            $table->dateTime('date_debut')->nullable();
             $table->dateTime('date_fin');
             $table->decimal('pourcentage_reduction', 5, 2);
             $table->timestamps();

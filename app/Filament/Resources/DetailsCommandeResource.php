@@ -19,7 +19,9 @@ class DetailsCommandeResource extends Resource
 {
     protected static ?string $model = DetailsCommande::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-credit-card';
+
+    protected static ?string $navigationGroup = 'Actions';
 
     public static function form(Form $form): Form
     {

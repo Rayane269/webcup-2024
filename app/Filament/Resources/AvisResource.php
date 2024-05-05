@@ -18,7 +18,8 @@ class AvisResource extends Resource
 {
     protected static ?string $model = Avis::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-oval-left-ellipsis';
+    protected static ?string $navigationGroup = 'Users reactions';
 
     public static function form(Form $form): Form
     {

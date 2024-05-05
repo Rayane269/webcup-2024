@@ -27,7 +27,12 @@ class UserRepository {
 
     $user = new User();
     $user->email = $resourceOwner->getEmail();
-    $user->name = $resourceOwner->getName();
+    if ($resourceOwner instanceof DiscordResourceOwner) {
+      $user->name = $resourceOwner->getUsername();
+    } else {
+      $user->name = $resourceOwner->getName();
+    }
+    
     $user->oauth_id = $resourceOwner->getId();
 
     $user->save();
