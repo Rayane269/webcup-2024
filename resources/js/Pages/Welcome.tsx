@@ -53,7 +53,7 @@ export default function Welcome({
   return (
     <>
       <Head title="Bienvenu - Mystical market" />
-      <Structure>
+      <Structure canLogin={false}>
         <HeaderLinks />
 
         <div className='md:py-6 px-5 md:px-16 bg-slate-100'>

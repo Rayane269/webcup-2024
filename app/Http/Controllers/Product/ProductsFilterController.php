@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-class FilterProductsController extends Controller
+class ProductsFilterController extends Controller
 {
   public function index() {
     $canLogin = !Auth::check();
