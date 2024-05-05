@@ -4,6 +4,6 @@ export default function ApplicationMark(
   props: React.SVGProps<SVGSVGElement>,
 ) {
   return (
-    <img src="/logo.png" alt=""  />
+    <img src="$/storage/logo.png" alt=""  />
   );
 }

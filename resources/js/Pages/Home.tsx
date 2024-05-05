@@ -1,21 +1,14 @@
-import React, { PropsWithChildren, useEffect, useState } from 'react';
-import useRoute from '@/Hooks/useRoute';
-import useTypedPage from '@/Hooks/useTypedPage';
-import { Head, Link } from '@inertiajs/react';
-import { Navbar } from '@/Components/App/Navbar/Navbar';
+import React from 'react';
+import { Head,  } from '@inertiajs/react';
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Hero } from '@/Components/App/Hero';
-import {
-  Banner,
-  Blogs,
-  Category,
-  Category2,
-  Footer,
-  Partners,
-  Popup,
-  Products,
-  Services
+import { Hero } from '@/Components/App'
+import { 
+  Banner, 
+  Category, 
+  Category2, 
+  Partners, 
+  Products, 
 } from '@/Components/App';
 
 import headphone from "$/storage/hero/headphone.png";
@@ -27,15 +20,8 @@ interface Props {
   canRegister: boolean;
   laravelVersion: string;
   phpVersion: string;
-  data: [],
-  products: []
+  data: []
 }
-interface Product {
-    id: number;
-    name: string;
-    price: number;
-    // Ajoutez d'autres propriétés si nécessaire
-  }
 
 const BannerData = {
   discount: "30% DE REMISE",
@@ -154,7 +140,6 @@ export default function Home({
   canLogin,
 }: Props) {
   
-
   const addProduct = useProductStore(state => state.addProduct)
   //ProductsData.forEach(product => addProduct({id: product.id, title: product.title, price: Number(product.price)}))
   const [orderPopup, setOrderPopup] = React.useState(false);
@@ -176,12 +161,8 @@ export default function Home({
   return (
     <>
       <Head title="Bienvenu - Mystical market" />
-      <ul>
-
-      </ul>
-
       <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 overflow-hidden">
-        <Structure
+        <Structure 
           orderPopup={orderPopup}
           handleOrderPopup={handleOrderPopup}
           canLogin={canLogin}
@@ -189,9 +170,6 @@ export default function Home({
           {canLogin && <Hero handleOrderPopup={handleOrderPopup} />}
           <Category data={CategoriesData} />
           <Category2 data={CategoriesData2} />
-          <Services />
-          <Banner data={BannerData} />
-          <Products data={ProductsData} />
           <Banner data={BannerData2} />
           <Products data={ProductsData} title="Nos promos" subtitle="Decouvrez nos promotions" />
           <Partners />
