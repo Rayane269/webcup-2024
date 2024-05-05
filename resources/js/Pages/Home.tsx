@@ -17,10 +17,24 @@ import { Structure } from '@/Layouts/Structure';
 
 interface Props {
   canLogin: boolean;
-  canRegister: boolean;
-  laravelVersion: string;
-  phpVersion: string;
+  products: ProductsType[];
+  categories: []
   data: []
+}
+
+type ProductsType = {
+  categorie: number
+  created_at: string
+  description: string
+  disponibilite: number
+  etat: number
+  id: number
+  image_url: string
+  nom: string
+  prix: string
+  prix_promotionnel: number | null
+  promotion: boolean
+  updated_at: string
 }
 
 const BannerData = {
@@ -63,66 +77,6 @@ import Image3 from "$/storage/category/macbook.png";
 import Image4 from "$/storage/category/gaming.png";
 import Image5 from "$/storage/category/vr.png";
 import Image6 from "$/storage/category/speaker.png";
-import { useProductStore } from '@/Components/App/Products/product.store';
-
-export const ProductsData = [
-  {
-    id: 1,
-    img: Img1,
-    title: "Boat Headphone",
-    price: "120",
-    aosDelay: "0",
-  },
-  {
-    id: 2,
-    img: Img2,
-    title: "Rocky Mountain",
-    price: "420",
-    aosDelay: "200",
-  },
-  {
-    id: 3,
-    img: Img3,
-    title: "Goggles",
-    price: "320",
-    aosDelay: "400",
-  },
-  {
-    id: 4,
-    img: Img4,
-    title: "Printed ",
-    price: "220",
-    aosDelay: "600",
-  },
-  {
-    id: 5,
-    img: Img5,
-    title: "Boat Headphone",
-    price: "120",
-    aosDelay: "0",
-  },
-  {
-    id: 6,
-    img: Img6,
-    title: "Rocky Mountain",
-    price: "420",
-    aosDelay: "200",
-  },
-  {
-    id: 7,
-    img: Img7,
-    title: "Goggles",
-    price: "320",
-    aosDelay: "400",
-  },
-  {
-    id: 8,
-    img: Img5,
-    title: "Printed ",
-    price: "220",
-    aosDelay: "600",
-  },
-]
 
 export const CategoriesData = [
   {label: 'Livres ensorcelés', img: Image1},
@@ -136,18 +90,26 @@ export const CategoriesData2 = [
   {label: 'Autre Objets', img: Image6},
 ]
 
+type ProductHydrateType = {id: number, img: string, title: string, price: string, aosDelay: string}
+
 export default function Home({
   canLogin,
+  products,
+  categories
 }: Props) {
   
-  const addProduct = useProductStore(state => state.addProduct)
-  //ProductsData.forEach(product => addProduct({id: product.id, title: product.title, price: Number(product.price)}))
   const [orderPopup, setOrderPopup] = React.useState(false);
-  
+  const productHydrate: ProductHydrateType[]  = products.map((product, index) => ({
+    id: product.id,
+    img: `storage/${product.image_url}`,
+    title: product.nom,
+    price: product.prix,
+    aosDelay: `${Number(index * 100)}`
+  }))
   const handleOrderPopup = () => {
     setOrderPopup(!orderPopup);
   }
-
+  console.log(products, categories)
   React.useEffect(() => {
     AOS.init({
       duration: 800,
@@ -171,7 +133,7 @@ export default function Home({
           <Category data={CategoriesData} />
           <Category2 data={CategoriesData2} />
           <Banner data={BannerData2} />
-          <Products data={ProductsData} title="Nos promos" subtitle="Decouvrez nos promotions" />
+          <Products data={productHydrate} title="Nos promos" subtitle="Decouvrez nos promotions" />
           <Partners />
         </Structure>
       </div>

@@ -27,7 +27,7 @@ class HomeController extends Controller
       return Inertia::render('Home', [
         'canLogin' => !Auth::check(),
         'products' => $products,
-        'categorie' => $categorie
+        'categories' => $categorie
       ]);
     }
 }
