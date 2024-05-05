@@ -9,6 +9,7 @@ import DropdownLink from "@/Components/DropdownLink";
 import useTypedPage from "@/Hooks/useTypedPage";
 import { router } from "@inertiajs/core";
 import { Profile } from "./Profile";
+import { useStoreOrder } from "../Order/order.store";
 
 
 type Props = {
@@ -18,6 +19,7 @@ type Props = {
 
 export const Navbar = ({ handleOrderPopup, canLogin }: Props) => {
   const route = useRoute()
+  const selectedIds = useStoreOrder(state => state.selectedIds)
   const MenuLinks = [
     {
       id: 1,
@@ -88,10 +90,13 @@ export const Navbar = ({ handleOrderPopup, canLogin }: Props) => {
             </div>
 
             {/* Order-button section */}
-            <button className="relative p-3" onClick={handleOrderPopup}>
+            <button 
+              className="relative p-3" 
+              onClick={() => router.get(route('order'))}
+            >
               <FaCartShopping className="text-xl text-gray-600 dark:text-gray-400" />
               <div className="w-4 h-4 bg-red-500 text-white rounded-full absolute top-0 right-0 flex items-center justify-center text-xs">
-                4
+                {selectedIds.size}
               </div>
             </button>
             {/* Dark Mode section */}

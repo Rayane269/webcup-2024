@@ -14,6 +14,7 @@ import Popup from "./Popup/Popup"
 import Blogs from "./Blogs/Blogs"
 import Footer from "./Footer/Footer"
 import { Profile } from "./Navbar/Profile"
+import Sidebar from "./Sidebar/Sidebar"
 
 export {
   Navbar,
@@ -31,5 +32,6 @@ export {
   Popup,
   Blogs,
   Footer,
-  Profile
+  Profile, 
+  Sidebar
 }
