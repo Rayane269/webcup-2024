@@ -3,21 +3,23 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\FacebookController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Product\OrderController;
 use App\Http\Controllers\Product\ProductController;
-use App\Http\Controllers\Product\FilterProductsController;
+use App\Http\Controllers\Product\ProductsFilterController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/teams', [TeamsController::class, 'index'])->name('teams');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('show_product');
-Route::get('/products/filter', [FilterProductsController::class, 'index'])->name('filter_products');
+Route::get('/products/filter', [ProductsFilterController::class, 'index'])->name('filter_products');
+Route::get('/order', [OrderController::class, 'index'])->name('order');
 
 Route::get('/connect/google', [GoogleController::class, 'connect'])->name('connect_google');
 Route::get('/connect/check/google', [GoogleController::class, 'connectCheck'])->name('connect_check_google');
