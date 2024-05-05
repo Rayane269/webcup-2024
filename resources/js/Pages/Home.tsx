@@ -61,15 +61,6 @@ const BannerData2 = {
   bgColor: "#2dcc6f",
 };
 
-// images import
-import Img1 from "$/storage/product/p-1.jpg";
-import Img2 from "$/storage/product/p-2.jpg";
-import Img3 from "$/storage/product/p-3.jpg";
-import Img4 from "$/storage/product/p-4.jpg";
-import Img5 from "$/storage/product/p-5.jpg";
-import Img6 from "$/storage/product/p-9.jpg";
-import Img7 from "$/storage/product/p-7.jpg";
-
 import Image1 from "$/storage/category/earphone.png";
 import Image2 from "$/storage/category/watch.png";
 import Image3 from "$/storage/category/macbook.png";
@@ -77,6 +68,7 @@ import Image3 from "$/storage/category/macbook.png";
 import Image4 from "$/storage/category/gaming.png";
 import Image5 from "$/storage/category/vr.png";
 import Image6 from "$/storage/category/speaker.png";
+import { useProductStore } from '@/Components/App/Products/product.store';
 
 export const CategoriesData = [
   {label: 'Livres ensorcelés', img: Image1},
@@ -99,9 +91,10 @@ export default function Home({
 }: Props) {
   
   const [orderPopup, setOrderPopup] = React.useState(false);
+  
   const productHydrate: ProductHydrateType[]  = products.map((product, index) => ({
     id: product.id,
-    img: `storage/${product.image_url}`,
+    img: `$/storage/${product.image_url}`,
     title: product.nom,
     price: product.prix,
     aosDelay: `${Number(index * 100)}`
