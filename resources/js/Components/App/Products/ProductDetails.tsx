@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useStoreOrder } from '../Order/order.store'
 
 export const ProductDetails = function() {
   const [images, setImages] = useState({
@@ -9,9 +10,12 @@ export const ProductDetails = function() {
   })
 
   const product = {
+    id: 1,
     name: 'Le Grimoire des Mondes Perdus',
     description: "Il était une fois, dans un royaume oublié, un grimoire mystérieux connu sous le nom de \"Le Grimoire des Mondes Perdus\". Ce livre ancien était réputé pour renfermer des connaissances interdites sur les mondes inexplorés et les mystères les plus profonds de l'univers. Le grimoire était gardé dans une tour sombre, au cœur de la forêt enchantée, où les arbres murmuraient des secrets millénaires et les étoiles brillaient d'une lueur magique. Seuls les plus braves osaient s'aventurer dans cette forêt, car elle était peuplée de créatures fantastiques et de sortilèges anciens. Un jour, une jeune fille nommée Elena entendit parler du grimoire. Elle était une aventurière intrépide, avide de connaissances et de découvertes. Malgré les avertissements des villageois, elle décida de partir à la recherche du livre légendaire. Guidée par une carte énigmatique et une étoile filante, Elena traversa des étendues sauvages, affronta des tempêtes magiques et déjoua des pièges mortels. Finalement, elle arriva devant la tour de la forêt enchantée. Déterminée, Elena escalada les marches de la tour et atteignit la chambre où reposait le grimoire. Le livre était orné de symboles étranges et de runes lumineuses, et il semblait pulsé d'une énergie mystique. Elena ouvrit le grimoire et découvrit des pages remplies de récits anciens, des cartes des mondes oubliés, et des sorts ancestraux. Mais au moment où elle commença à lire, elle fut aspirée dans un tourbillon de lumière et de magie. Quand Elena reprit conscience, elle se trouvait dans un autre monde, un monde où les étoiles dansaient dans le ciel et les océans brillaient de mille couleurs. Elle avait pénétré dans l'un des mondes perdus dont parlait le grimoire. Dans ce nouveau monde, Elena rencontra des créatures étranges et des peuples oubliés. Elle apprit de nouvelles magies et découvrit des trésors cachés. Mais elle comprit aussi que le grimoire renfermait un grand pouvoir, un pouvoir qui pouvait sauver ou détruire des mondes entiers. Avec courage et sagesse, Elena utilisa le grimoire pour guider les habitants de ce monde vers la lumière, repoussant les ténèbres qui menaçaient de les engloutir. Finalement, après de nombreuses aventures, Elena trouva le chemin du retour. Elle referma le grimoire, emportant avec elle les souvenirs de ses voyages et les leçons apprises. Et ainsi, le Grimoire des Mondes Perdus devint un récit légendaire, transmis de génération en génération, rappelant aux êtres courageux que l'aventure et la connaissance sont les plus grands trésors de tous.",
   }
+  const addId = useStoreOrder(store => store.addId)
+  const selectedIds = useStoreOrder(store => store.selectedIds)
 
   const [afficherTout, setAfficherTout] = useState(false)
   const histoireRaccourcie = product.description.slice(0, 500)
@@ -46,11 +50,20 @@ export const ProductDetails = function() {
         <h6 className='text-2xl font-semibold'>$ 199.00</h6>
         <div className='flex flex-row items-center gap-12'>
           <div className='flex flex-row items-center'>
-            <button className='bg-gray-200 py-2 px-5 rounded-lg text-violet-800 text-3xl' onClick={() => setAmount((prev) => prev - 1)}>-</button>
+            <button 
+              className='bg-gray-200 py-2 px-5 rounded-lg text-violet-800 text-3xl' 
+              onClick={() => setAmount((prev) => prev <= 0 ? 0 : prev - 1)}
+            >-</button>
             <span className='py-4 px-6 rounded-lg'>{amount}</span>
             <button className='bg-gray-200 py-2 px-4 rounded-lg text-violet-800 text-3xl' onClick={() => setAmount((prev) => prev + 1)}>+</button>
           </div>
-          <button className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl h-full'>Add to Cart</button>
+          <button 
+            disabled={selectedIds.has(product.id) ? true : false}
+            onClick={() => addId(product.id)}
+            className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl h-full'
+          >
+            {selectedIds.has(product.id) ? 'Déjà ajouter' : 'Ajouter au panier'}
+          </button>
         </div>
       </div>
     </div>

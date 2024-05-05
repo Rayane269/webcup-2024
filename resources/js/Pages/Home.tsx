@@ -70,6 +70,7 @@ import Image3 from "$/storage/category/macbook.png";
 import Image4 from "$/storage/category/gaming.png";
 import Image5 from "$/storage/category/vr.png";
 import Image6 from "$/storage/category/speaker.png";
+import { useProductStore } from '@/Components/App/Products/product.store';
 
 export const ProductsData = [
   {
@@ -101,28 +102,28 @@ export const ProductsData = [
     aosDelay: "600",
   },
   {
-    id: 1,
+    id: 5,
     img: Img5,
     title: "Boat Headphone",
     price: "120",
     aosDelay: "0",
   },
   {
-    id: 2,
+    id: 6,
     img: Img6,
     title: "Rocky Mountain",
     price: "420",
     aosDelay: "200",
   },
   {
-    id: 3,
+    id: 7,
     img: Img7,
     title: "Goggles",
     price: "320",
     aosDelay: "400",
   },
   {
-    id: 4,
+    id: 8,
     img: Img5,
     title: "Printed ",
     price: "220",
@@ -173,10 +174,13 @@ export default function Home({
     ]
   }
 
+  const addProduct = useProductStore(state => state.addProduct)
+  //ProductsData.forEach(product => addProduct({id: product.id, title: product.title, price: Number(product.price)}))
   const [orderPopup, setOrderPopup] = React.useState(false);
+  
   const handleOrderPopup = () => {
     setOrderPopup(!orderPopup);
-  };
+  }
 
   React.useEffect(() => {
     AOS.init({

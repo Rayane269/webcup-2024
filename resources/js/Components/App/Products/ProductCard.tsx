@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../Shared/Button";
 import { router } from "@inertiajs/core";
 import useRoute from "@/Hooks/useRoute";
+import { useStoreOrder } from "../Order/order.store";
 
 type Props = {
   data: Array<{
@@ -15,6 +16,8 @@ type Props = {
 
 const ProductCard = ({ data }: Props) => {
   const route = useRoute()
+  const addId = useStoreOrder(store => store.addId)
+  const selectedIds = useStoreOrder(store => store.selectedIds)
 
   return (
     <div className="mb-10">
@@ -37,9 +40,11 @@ const ProductCard = ({ data }: Props) => {
               <div className="hidden group-hover:flex absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 h-full w-full text-center group-hover:backdrop-blur-sm justify-center items-center duration-200 rounded-md">
                 <div className="flex flex-col gap-y-1">
                   <Button
-                    text={"Ajoutez au panier"}
-                    bgColor={"bg-primary"}
+                    bgColor={selectedIds.has(data.id) ? "bg-slate-100" : "bg-primary"}
+                    text={selectedIds.has(data.id) ? 'Déjà ajouter' : 'Ajouter au panier'}
+                    disabled={selectedIds.has(data.id) ? true : false}
                     textColor={"text-white"}
+                    handler={() => addId(data.id)}
                   />
                   <Button
                     text={"Voir details"}
