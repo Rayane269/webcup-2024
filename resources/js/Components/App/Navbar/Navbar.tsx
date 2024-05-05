@@ -9,6 +9,7 @@ import DropdownLink from "@/Components/DropdownLink";
 import useTypedPage from "@/Hooks/useTypedPage";
 import { router } from "@inertiajs/core";
 import { Profile } from "./Profile";
+import ApplicationLogo from "@/Components/ApplicationLogo";
 
 
 type Props = {
@@ -47,7 +48,7 @@ export const Navbar = ({ handleOrderPopup, canLogin }: Props) => {
               href="/"
               className="text-black dark:text-white font-webcup tracking-widest text-2xl uppercase sm:text-3xl"
             >
-              Mystical M
+              <ApplicationLogo className="h-1 w-1"></ApplicationLogo>
             </Link>
             {/* Menu Items */}
             {canLogin && (

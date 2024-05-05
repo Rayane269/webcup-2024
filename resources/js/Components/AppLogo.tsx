@@ -7,7 +7,7 @@ type Props = {
 export const AppLogo = function({className}: Props) {
   return (
     <div className={className} >
-      <h1>LOGO</h1>
+      <img src="/logo.png" alt="" />
     </div>
   )
 }

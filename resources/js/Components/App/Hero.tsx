@@ -33,7 +33,7 @@ type Props = {
   handleOrderPopup: () => void
 }
 
-export const Hero = ({ handleOrderPopup }: Props) => {
+export const  Hero = ({ handleOrderPopup }: Props) => {
   const settings = {
     dots: false,
     arrows: false,
