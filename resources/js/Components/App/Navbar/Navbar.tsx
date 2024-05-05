@@ -24,19 +24,10 @@ export const Navbar = ({ handleOrderPopup, canLogin }: Props) => {
       name: "Home",
       link: "/",
     },
-  
-    {
-      id: 3,
-      name: "About",
-      link: route('about'),
-    },
-    {
-      id: 2,
-      name: "Equipe",
-      link: route('teams'),
-    }
+
+
   ];
-  
+
   return (
     <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40">
       <div className="py-4">
@@ -62,7 +53,7 @@ export const Navbar = ({ handleOrderPopup, canLogin }: Props) => {
                         {data.name}
                       </Link>
                     </li>
-                  ))}  
+                  ))}
                 </ul>
                 <button className="bg-black text-white px-4 p-2 rounded-full">
                   <Link className="font-bold" href={route('login')}>
@@ -88,8 +79,8 @@ export const Navbar = ({ handleOrderPopup, canLogin }: Props) => {
             </div>
 
             {/* Order-button section */}
-            <button 
-              className="relative p-3" 
+            <button
+              className="relative p-3"
               onClick={() => router.get(route('order'))}
             >
               <FaCartShopping className="text-xl text-gray-600 dark:text-gray-400" />
@@ -104,7 +95,7 @@ export const Navbar = ({ handleOrderPopup, canLogin }: Props) => {
 
             {/* Avatar */}
             {!canLogin && <Profile />}
-            
+
           </div>
         </div>
       </div>

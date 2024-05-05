@@ -12,21 +12,17 @@ import {
 const FooterLinks = [
   {
     title: "Home",
-    link: "/#",
+    link: "/",
   },
-  {
-    title: "About",
-    link: "/#about",
-  },
-  {
-    title: "Contact",
-    link: "/#contact",
-  },
-  {
-    title: "Blog",
-    link: "/#blog",
-  },
+
 ];
+const FooterLinkss = [
+    {
+      title: "Connexion",
+      link: "/login",
+    },
+
+  ];
 
 const Footer = () => {
   return (
@@ -36,17 +32,11 @@ const Footer = () => {
           {/* company details */}
           <div className="py-8 px-4">
             <ApplicationLogo className="h-1 w-1"></ApplicationLogo>
-            
+
             <p className="text-gray-500 mt-4">
               Made with 💖 by The Coding Journey
             </p>
-            <a
-              href="https://www.youtube.com/channel/UC1H-a1MKEFXRiFlGNLcy7gQ"
-              target="_blank"
-              className="inline-block bg-primary/90 text-white py-2 px-4 mt-4 text-sm rounded-full"
-            >
-              Visit our YouTube Channel
-            </a>
+
           </div>
 
           {/* Footer links */}
@@ -74,7 +64,7 @@ const Footer = () => {
                 Quick Links
               </h1>
               <ul className="space-y-3">
-                {FooterLinks.map((data, index) => (
+                {FooterLinkss.map((data, index) => (
                   <li key={index}>
                     <a
                       href={data.link}
@@ -102,8 +92,8 @@ const Footer = () => {
 
                 {/* social links */}
                 <div className="flex items-center gap-3 mt-6">
-                  
-                  
+
+
                   <a href="http://www.linkedin.com/in/hassani-abdoul-wahid-4a79381ba">
                     <FaLinkedin className="text-3xl hover:text-primary duration-200" />
                   </a>
